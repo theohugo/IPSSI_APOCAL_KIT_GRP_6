@@ -153,14 +153,15 @@
 
 *Émerge via la Perturbation J1 — lundi 14h*
 
-**Profil :** 47 ans, Maître de conférences en Sciences de l'Éducation, IUT de Créteil. Prépare ses évaluations manuellement (3h pour 10 questions). Exige que les données de ses étudiants et de son manuel restent dans l'établissement.
+**Profil :** 42 ans, Enseignante en BTS Communication, Lyon. Responsable d'une classe de 28 élèves. Prépare ses évaluations manuellement (3h pour 10 questions). Besoin principal : suivre la progression de sa classe et repérer les élèves décrocheurs. Exige que les données de ses élèves restent dans l'établissement.
 
 | Étape | Actions | Émotions | Frictions clés |
 |-------|---------|----------|----------------|
-| **Découverte** | Entendu parler par un collègue · Lit la doc · Vérifie la conformité RGPD avec son DSI | Méfiance institutionnelle · Intérêt si souveraineté confirmée | Pas de page dédiée enseignants · Pas de mention "RGPD / hébergement local" visible |
-| **Prise en main** | Uploade un chapitre de son manuel · Génère un quiz · Évalue la qualité pédagogique | Surprise si questions correctes · Déception si trop faciles | Pas de contrôle sur la difficulté · Pas de validation des questions avant distribution |
-| **Signalement d'erreur** | Remarque des erreurs factuelles (Perturbation J4) · Veut signaler à l'équipe technique | Frustration · Perte de confiance | Pas de mécanisme de feedback dans le MVP → déclenche le modèle `QuestionReport` |
-| **Usage régulier** | Génère des QCM pour ses TD · Exporte · Partage avec ses étudiants | Gain de temps réel (3h → 5 min) · Satisfaction si qualité OK | Pas d'export Word/PDF dans le MVP · Pas de gestion de cohorte |
+| **Découverte** | Entendu parler par un collègue · Lit la doc · Vérifie la conformité RGPD avec son DSI | Méfiance institutionnelle · Intérêt si souveraineté confirmée | Pas de page dédiée enseignants · Pas de case "RGPD / hébergement local" visible |
+| **Prise en main** | Uploade un chapitre de son manuel · Génère un quiz de 10 questions · Évalue la qualité pédagogique des questions | Surprise si questions correctes · Déception si questions trop faciles ou hors programme | Pas de contrôle sur le niveau de difficulté · Pas de validation/modification des questions avant distribution |
+| **Signalement d'erreur** | Remarque des erreurs factuelles dans les questions générées (Perturbation J4) · Veut signaler l'erreur à l'équipe technique | Frustration · Perte de confiance dans le produit | Pas de mécanisme de feedback dans le MVP → déclenche la Perturbation J4 et le modèle `QuestionReport` |
+| **Usage régulier** | Génère des QCM pour ses TD · Exporte les questions · Partage avec ses étudiants | Gain de temps réel (3h → 5 min) · Satisfaction pédagogique si qualité OK | Pas d'export Word/PDF dans le MVP · Pas de gestion de cohorte |
+| **Satisfaction / Recommandation** | Si qualité bonne : recommande EduTutor IA à ses collègues · Continue à générer ses QCM. Si qualité insuffisante : abandonne l'outil · Revient à la préparation manuelle | Fierté et gain de crédibilité si l'outil tient ses promesses · Déception et méfiance renforcée si qualité insuffisante | Pas de mécanisme de retour structuré · Pas de canal de recommandation entre collègues intégré au produit |
 
 **Besoins non couverts par le MVP → Release 2 :**
 - Validation et modification des questions avant usage
