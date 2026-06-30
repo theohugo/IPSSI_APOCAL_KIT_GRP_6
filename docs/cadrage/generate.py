@@ -152,7 +152,7 @@ def render(md_path, docx_path):
 # equipe-XX-nom-document-vY.Z.docx). La source de vérité reste le .md.
 OUTPUTS = {
     "product-vision-board.md": "equipe-6-product-vision-board-v1.0.docx",
-    "personas.md": "equipe-6-personas-v1.1.docx",
+    "personas.md": "equipe-6-personas-v1.2.docx",
     "03_customer_journey_map.md": "equipe-6-customer-journey-map-v1.0.docx",
     "product-backlog.md": "equipe-6-product-backlog-v1.0.docx",
 }
