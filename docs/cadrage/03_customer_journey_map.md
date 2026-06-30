@@ -20,6 +20,8 @@
 
 ## Persona de référence — Lucas Moreau (cible primaire imposée)
 
+> Persona décrit dans les [Personas](personas.md) — §2, Persona primaire #1.
+
 **Profil :** 21 ans, L3 Informatique, Université Paris-Saclay. Job étudiant le week-end, révise seul sur son laptop Windows (8 Go RAM). Budget nul pour les abonnements. Utilise actuellement ChatGPT (limité) et Quizlet (trop générique). Connexion Wi-Fi instable en résidence universitaire.
 
 **Objectif principal :** Transformer ses cours en quiz d'entraînement rapidement, sans effort de préparation, pour identifier ses lacunes avant les partiels.
