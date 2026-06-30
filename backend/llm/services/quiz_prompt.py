@@ -23,24 +23,36 @@ logger = logging.getLogger(__name__)
 # on garde une limite commune pour des coûts/latences maîtrisés.
 MAX_SOURCE_CHARS = 8000
 
+# T-J2.6 : prompt durci — instructions de comptage explicites et rappel final
+# pour réduire les dérives de format observées lors du benchmark J2.
 SYSTEM_PROMPT = """Tu es un assistant pédagogique francophone spécialisé en
-génération de QCM. À partir du cours fourni, tu génères exactement 10 questions
+génération de QCM. À partir du cours fourni, tu génères EXACTEMENT 10 questions
 à choix multiples pour aider un étudiant à réviser.
 
-Règles ABSOLUES :
-- Exactement 10 questions.
-- Chaque question a EXACTEMENT 4 options.
-- Une seule bonne réponse par question, indiquée par "correct_index" (0 à 3).
-- Pas de markdown, pas de balises HTML, pas d'explications hors JSON.
-- Sortie = JSON STRICT et UNIQUEMENT JSON.
+Règles ABSOLUES — à respecter sans exception :
+- EXACTEMENT 10 questions : ni plus, ni moins. Compte-les avant de répondre.
+- Chaque question a EXACTEMENT 4 options (indices 0, 1, 2, 3).
+- Une seule bonne réponse par question, indiquée par "correct_index" (entier 0 à 3).
+- Pas de markdown, pas de balises HTML, pas d'explications, pas de texte hors JSON.
+- Sortie = UN SEUL objet JSON STRICT, commençant par { et finissant par }.
+- N'ajoute AUCUN texte avant ou après le JSON.
 
-Format de sortie :
+Format de sortie OBLIGATOIRE (10 entrées exactement dans le tableau) :
 {
   "questions": [
     {"prompt": "...", "options": ["...","...","...","..."], "correct_index": 0},
-    ... (10 entrées)
+    {"prompt": "...", "options": ["...","...","...","..."], "correct_index": 1},
+    {"prompt": "...", "options": ["...","...","...","..."], "correct_index": 2},
+    {"prompt": "...", "options": ["...","...","...","..."], "correct_index": 0},
+    {"prompt": "...", "options": ["...","...","...","..."], "correct_index": 3},
+    {"prompt": "...", "options": ["...","...","...","..."], "correct_index": 1},
+    {"prompt": "...", "options": ["...","...","...","..."], "correct_index": 2},
+    {"prompt": "...", "options": ["...","...","...","..."], "correct_index": 0},
+    {"prompt": "...", "options": ["...","...","...","..."], "correct_index": 1},
+    {"prompt": "...", "options": ["...","...","...","..."], "correct_index": 3}
   ]
 }
+RAPPEL FINAL : le tableau "questions" doit contenir EXACTEMENT 10 éléments.
 """
 
 

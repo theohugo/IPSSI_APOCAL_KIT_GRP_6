@@ -8,11 +8,18 @@ souveraineté des données + zéro coût. Sa contrepartie est la latence sur CPU
 quiz_prompt.py et partagés avec les clients OpenAI / Claude.
 """
 
+import logging
+
 import requests
 from django.conf import settings
 
 from .base import LLMClient, LLMError
 from .quiz_prompt import build_full_prompt, parse_and_validate_quiz
+
+logger = logging.getLogger(__name__)
+
+# Nombre de tentatives en cas de réponse LLM invalide (T-J2.6)
+MAX_RETRIES = 3
 
 
 class OllamaLLMClient(LLMClient):
@@ -29,11 +36,27 @@ class OllamaLLMClient(LLMClient):
         self.timeout = timeout or settings.OLLAMA_TIMEOUT
 
     def generate_quiz(self, source_text: str, title: str) -> list[dict]:
+        # T-J2.6 : retry automatique si le LLM dévie du format 10 QCM.
         # Ollama /api/generate attend UN prompt unique (pas de séparation
         # system/user) : on concatène donc system + cours via build_full_prompt.
         prompt = build_full_prompt(source_text, title)
-        raw = self._call_ollama(prompt)
-        return parse_and_validate_quiz(raw)
+        last_error: LLMError | None = None
+        for attempt in range(1, MAX_RETRIES + 1):
+            try:
+                raw = self._call_ollama(prompt)
+                return parse_and_validate_quiz(raw)
+            except LLMError as exc:
+                last_error = exc
+                logger.warning(
+                    "Tentative %d/%d échouée (modèle=%s) : %s",
+                    attempt,
+                    MAX_RETRIES,
+                    self.model,
+                    exc,
+                )
+        raise LLMError(
+            f"Le LLM n'a pas produit 10 QCM valides après {MAX_RETRIES} tentatives : {last_error}"
+        )
 
     # ----- internals -----
 
