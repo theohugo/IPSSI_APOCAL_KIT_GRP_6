@@ -19,6 +19,8 @@ export type LegalSection = {
   title: string;
   /** Indication pour l'équipe : quoi écrire dans cette rubrique. */
   hint: string;
+  /** Contenu réel de la rubrique (remplace le hint quand renseigné). */
+  content?: string;
 };
 
 type Props = {
@@ -59,7 +61,11 @@ export default function LegalScaffold({ title, intro, sections, children }: Prop
             <h2 className="text-lg font-semibold text-slate-900 mb-1">
               {i + 1}. {section.title}
             </h2>
-            <p className="text-sm text-slate-500 italic">À compléter — {section.hint}</p>
+            {section.content ? (
+              <p className="text-sm text-slate-700 whitespace-pre-line">{section.content}</p>
+            ) : (
+              <p className="text-sm text-slate-500 italic">À compléter — {section.hint}</p>
+            )}
           </section>
         ))}
       </div>
