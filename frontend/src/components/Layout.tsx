@@ -35,7 +35,7 @@ export default function Layout() {
             </span>
           </Link>
 
-          <nav className="flex items-center gap-4 text-sm">
+          <nav aria-label="Navigation principale" className="flex items-center gap-4 text-sm">
             {user ? (
               <>
                 <Link to="/upload" className="text-slate-700 hover:text-indigo-600">
@@ -61,7 +61,7 @@ export default function Layout() {
                     Admin
                   </Link>
                 )}
-                <span className="text-slate-500">|</span>
+                <span aria-hidden="true" className="text-slate-500">|</span>
                 <Link
                   to="/profile"
                   className="text-slate-600 hover:text-indigo-600 hidden sm:inline"
@@ -106,7 +106,7 @@ export default function Layout() {
       <footer className="border-t border-slate-200 mt-12">
         <div className="max-w-6xl mx-auto px-4 py-6 space-y-3 text-sm text-slate-500">
           {/* Liens légaux (pages à compléter par les étudiants) */}
-          <nav className="flex flex-wrap gap-x-4 gap-y-1">
+          <nav aria-label="Liens légaux" className="flex flex-wrap gap-x-4 gap-y-1">
             <Link to="/legal/mentions-legales" className="hover:text-indigo-600">
               Mentions légales
             </Link>
