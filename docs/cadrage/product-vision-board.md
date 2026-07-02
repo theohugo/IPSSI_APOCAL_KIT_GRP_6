@@ -8,9 +8,9 @@
 | **Membres** | Kahil MOKHTARI · Amine HADDANE · Souleymane FALL · Nikola MILOSAVLJEVIC · Dina CHAOUKI · Rayan ZEBAZE SAO · Hugo RAGUIN |
 | **Sprint concerné** | Cadrage |
 | **Artefact** | 1 sur 7 — Product Vision Board |
-| **Version** | v1.0 |
-| **Date de remise** | 29/06/2026 |
-| **Statut** | Draft (à valider PO) |
+| **Version** | v2.0 |
+| **Date de remise** | 29/06/2026 · mis à jour 02/07/2026 (J4) |
+| **Statut** | Mis à jour suite perturbation J4 (scalabilité · RGAA · i18n) |
 | **Rédacteur** | Dina CHAOUKI |
 | **Fichier** | `equipe-6-product-vision-board-v1.0` |
 | **Méthode** | Roman Pichler (5 composants) + Vision Statement Geoffrey Moore |
@@ -21,11 +21,13 @@
 
 > *Formule Geoffrey Moore — Crossing the Chasm*
 
-**Pour** les étudiant·e·s du supérieur qui peinent à réviser efficacement à partir de leurs cours et documents,  
-**EduTutor IA** est une application web pédagogique  
-**qui** génère automatiquement des quiz personnalisés (QCM) à partir des propres supports de l'utilisateur (PDF ou texte libre) via une IA locale souveraine.  
-**Contrairement à** Quizlet AI, Wilgo ou Khanmigo qui produisent des résumés génériques à partir de contenus tiers,  
-**notre produit** ancre chaque question directement dans le document fourni par l'enseignant, garantit une conformité RGPD totale (aucune donnée hors UE) et offre une traçabilité pédagogique vérifiable question par question.
+**Pour** tous les élèves et enseignant·e·s — en France et à l'international, y compris en situation de handicap — qui veulent réviser ou piloter la révision à partir de leurs propres cours,  
+**EduTutor IA** est une **plateforme publique nationale de révision par IA**  
+**qui** génère automatiquement des quiz personnalisés (QCM) dans la langue de l'utilisateur, ancrés dans ses propres documents, via une IA locale souveraine accessible à tous (RGAA).  
+**Contrairement à** Quizlet AI, Wilgo ou Khanmigo qui produisent des résumés génériques, ne respectent pas le RGPD et excluent les utilisateurs en situation de handicap,  
+**notre produit** garantit la traçabilité pédagogique, la conformité RGPD totale, l'accessibilité RGAA et une architecture scalable capable d'absorber des millions d'utilisateurs simultanés.
+
+> **Évolution v2.0 (perturbation J4 — 02/07/2026)** : suite au succès viral national et à la demande de l'État, la vision passe de « outil de révision étudiant FR » à **« plateforme de référence nationale, accessible, multilingue et scalable »**.
 
 ---
 
@@ -38,6 +40,7 @@
 | **Étudiant·e du supérieur** *(cible primaire)* | 18-28 ans, BTS / Licence / Master · usage smartphone & laptop quotidien · **~2,7 M d'étudiant·e·s dans le supérieur** (MESR 2024) | 5 à 15 h/semaine perdues à chercher ou créer des supports de révision | Confidentialité des cours (local-first) + génération rapide (< 60 s) |
 | **Enseignant·e** *(cible primaire — décision PO J1)* | Ex. Mme Sophie Lefèvre, 42 ans, prof de BTS Communication à Lyon, 28 étudiants · maîtrise numérique modérée · **~770 000 enseignant·e·s** (Éducation nationale 2024) | ~12 h/mois en correction et préparation de supports d'évaluation ; aucune vue d'ensemble des décrocheurs | Interface simple sans configuration + suivi de classe + conformité RGPD des données élèves |
 | **Établissement scolaire** *(cible tertiaire — acheteur B2B)* | Direction de lycée privé / BTS / école supérieure · responsable pédagogique ou DSI · **~7 500 lycées + ~3 500 établissements du supérieur** | Budget edtech contraint (< 5 €/élève/an) + obligation RGPD non négociable | Aucune donnée hors UE (clause contractuelle) + coût prévisible par élève/an |
+| **Amina / Diego** *(nouveaux — perturbation J4)* | Amina, 17 ans, lycéenne malvoyante à Marseille (lecteur d'écran NVDA) · Diego, 16 ans, lycéen à Madrid · **~12 M de lycéens en Europe non-francophones** | Interface inaccessible (pas de navigation clavier, contrastes insuffisants) ; quiz uniquement en français | Conformité RGAA (navigation clavier + ARIA + contrastes AA) + réponses IA dans leur langue |
 | **Administrateur plateforme** *(interne)* | Équipe EduTutor. Gère la configuration du LLM, les utilisateurs, la modération et les KPIs produit. | Maintien en condition opérationnelle du service et de la souveraineté | Contrôle total de la stack (Ollama local) sans dépendance cloud |
 
 > **Note de cadrage (perturbation J1).** Le Product Owner a repositionné l'enseignant·e **cible primaire au même niveau que l'étudiant** : les fonctionnalités de suivi de classe entrent dans le périmètre prioritaire (voir [Personas](personas.md) et [Perturbation J1](perturbations/j1-produit.md)). L'**établissement** reste cible tertiaire (acheteur B2B), pertinente pour le modèle économique mais hors périmètre MVP.
@@ -56,9 +59,14 @@
 - « En tant qu'enseignant·e, j'ai besoin de **repérer les décrocheurs en 3 clics** (tri/alerte sur scores faibles) pour intervenir rapidement. »
 - « En tant qu'enseignant·e, j'ai besoin d'**envoyer des conseils ciblés** à un étudiant en difficulté sans quitter l'outil. »
 
+### Amina / Diego — Utilisateurs internationaux & accessibilité *(perturbation J4)*
+- « En tant que lycéen·ne malvoyant·e, j'ai besoin de **naviguer entièrement au clavier avec des contrastes suffisants** pour utiliser l'application comme tout le monde. »
+- « En tant qu'élève hispanophone, j'ai besoin que **l'interface et les quiz générés soient en espagnol** pour réviser dans ma langue. »
+
 ### Administrateur
 - « En tant qu'administrateur, j'ai besoin de **configurer le fournisseur LLM** (Ollama local par défaut) pour garantir la souveraineté des données. »
 - « En tant qu'administrateur, j'ai besoin de **gérer les comptes utilisateurs** (création, suspension, suppression) pour assurer la qualité du service. »
+- « En tant qu'administrateur, j'ai besoin de **monitorer la charge et déclencher l'autoscaling** pour absorber des millions d'utilisateurs simultanés. »
 
 ---
 
@@ -75,6 +83,14 @@
 | F5 | **Score /10 + détail bonnes/mauvaises réponses** | Feedback immédiat |
 | F6 | **Historique persisté des quiz** par utilisateur (date, cours, score) | Suivi de progression |
 
+### Release 3 — Plateforme publique nationale *(axes J4)*
+
+| # | Fonctionnalité | Axe | Valeur |
+|---|---|---|---|
+| E14 | **Génération asynchrone** (file de travail + workers) + autoscaling | Scalabilité | Millions d'users simultanés |
+| E15 | **Audit RGAA** + navigation clavier + contrastes AA + libellés ARIA | Accessibilité | Prérequis service public |
+| E16 | **i18n interface** (FR/EN extensible) + **réponses IA multilingues** | i18n | Ouverture internationale |
+
 ---
 
 ## 📊 Business Goals — Objectifs mesurables (SMART)
@@ -87,6 +103,10 @@
 | **Souveraineté** | 0 donnée utilisateur hors UE (RGPD) | Dès le 1er jour |
 | **Bouche-à-oreille** | NPS (Net Promoter Score) ≥ 40 | À 6 mois |
 | **B2B éducation** | 10 établissements partenaires pilotes | 12 mois |
+| **Service public national** *(J4)* | Adoption comme plateforme de référence lycées FR (contrat État) | 18 mois |
+| **Accessibilité** *(J4)* | Conformité RGAA niveau AA | Avant déploiement national |
+| **International** *(J4)* | Interface disponible en FR + EN (+ ES en Release 3) | 12 mois |
+| **Scalabilité** *(J4)* | Tient 100 000 utilisateurs simultanés sans dégradation | 12 mois |
 
 ---
 
@@ -102,7 +122,10 @@
 **Avantage différenciant EduTutor IA :**  
 1. Prompts métier enseignant-first (pas étudiant-first)  
 2. Ancrage dans le document fourni → pas d'hallucination non traçable  
-3. Ollama local → 100 % RGPD, prérequis contractuel B2B éducation FR
+3. Ollama local → 100 % RGPD, prérequis contractuel B2B éducation FR  
+4. **RGAA conforme** → seule plateforme IA pédagogique accessible aux élèves en situation de handicap *(J4)*  
+5. **Multilingue** → IA qui répond dans la langue de l'élève *(J4)*  
+6. **Architecture scalable** → dimensionnée pour le déploiement national *(J4)*
 
 ---
 
@@ -124,7 +147,7 @@
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
 │                    PRODUCT VISION BOARD — EduTutor IA                   │
-│                           29 juin 2026                                  │
+│              29 juin 2026 · v2.0 mis à jour 02 juillet 2026 (J4)        │
 ├──────────────────────────────┬──────────────────────────────────────────┤
 │  🌟 VISION STATEMENT         │  👥 TARGET GROUPS                        │
 │                              │                                          │
@@ -134,9 +157,9 @@
 │  une app web qui génère des  │  2. Mme Lefèvre (primaire — J1)          │
 │  quiz depuis leurs propres   │     42 ans, suivi 28 étudiants           │
 │  cours via IA locale RGPD.   │                                          │
-│  Contrairement aux MOOC IA,  │  3. Administrateur (interne)             │
-│  chaque question est ancrée  │     Config LLM, gestion users            │
-│  dans le document source.    │                                          │
+│  Contrairement aux MOOC IA,  │  3. Amina/Diego (J4 — a11y + i18n)      │
+│  chaque question est ancrée  │     Malvoyant·e + hispanophone           │
+│  dans le document source.    │  4. Administrateur (interne)             │
 ├──────────────────────────────┼──────────────────────────────────────────┤
 │  💡 NEEDS (Besoins)          │  📦 PRODUCT (Fonctionnalités clés)       │
 │                              │                                          │
@@ -157,7 +180,13 @@
 │                                                                         │
 │  • 500 inscrits à 6 mois   • Rétention ≥ 60 % à 3 mois                │
 │  • Satisfaction ≥ 4/5      • 0 donnée hors UE (RGPD)   • NPS ≥ 40     │
+│  • RGAA AA avant déploiement national  • 100k users simultanés (J4)    │
 └─────────────────────────────────────────────────────────────────────────┘
+
+---
+
+*v1.0 — 29/06/2026 · v2.0 — 02/07/2026 (mise à jour J4 : scalabilité · RGAA · i18n)*  
+*Rédigé par : Dina CHAOUKI*
 ```
 
 ---
