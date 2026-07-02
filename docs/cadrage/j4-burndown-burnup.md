@@ -31,6 +31,15 @@
 
 **Lecture** : démarrage plus lent que l'idéal (mise en route), puis rattrapage ; la perturbation **J3-bis** insérée en cours de sprint a été **absorbée sans décaler la fin**. Reste-à-faire ramené à **0** à 17h45.
 
+```mermaid
+xychart-beta
+    title "Burndown — Sprint MVP (Sprint 5)"
+    x-axis ["14h00", "14h45", "15h30", "16h15", "17h00", "17h45"]
+    y-axis "Points restants" 0 --> 22
+    line "Idéal" [22, 18, 14, 9, 5, 0]
+    line "Réel" [22, 22, 17, 12, 6, 0]
+```
+
 ---
 
 ## 2. Burnup — Projet (Sprints 1 → 8)
@@ -53,6 +62,15 @@ Le burnup distingue **deux courbes** : le **réalisé cumulé** (ce qui est term
 - La courbe **réalisé cumulé** progresse régulièrement (vélocité ~14–21 pts/sprint), ce qui valide un rythme soutenable.
 - La courbe **périmètre** fait **3 sauts visibles** dus aux perturbations : **J1 (+13)**, **J3/J3-bis (+8)** et surtout **J4 passage à l'échelle (+68)**.
 - **Impact chiffré J4** : le périmètre bondit de **141 → 209 pts** (**+48 %**). À la fin de la semaine, **133/209 pts** sont réalisés : les **~76 pts** de RGAA/i18n/scalabilité constituent une **Release 3 « Plateforme publique »** planifiée **au-delà** de la semaine — c'est l'effet attendu de la perturbation, rendu **visible et chiffré** plutôt que subi.
+
+```mermaid
+xychart-beta
+    title "Burnup Projet — Sprints 1 à 8"
+    x-axis ["S1", "S2", "S3", "S4", "S5 MVP", "S6", "S7", "S8 R2"]
+    y-axis "Points" 0 --> 220
+    line "Réalisé cumulé" [14, 30, 48, 67, 88, 105, 123, 133]
+    line "Périmètre total" [120, 133, 133, 136, 141, 141, 209, 209]
+```
 
 ---
 
