@@ -89,11 +89,7 @@ def _quizzes_payload(user: User) -> list[dict]:
 
 def _answers_payload(user: User) -> list[dict]:
     """Réponses données par l'utilisateur (questions auxquelles il a répondu)."""
-    answered = (
-        Quiz.objects.filter(user=user)
-        .prefetch_related("questions")
-        .order_by("-created_at")
-    )
+    answered = Quiz.objects.filter(user=user).prefetch_related("questions").order_by("-created_at")
     rows: list[dict] = []
     for quiz in answered:
         for q in quiz.questions.all():
@@ -175,9 +171,9 @@ def build_export_artifact(user: User, output_format: str = "json") -> ExportArti
         content_type = "application/zip"
         filename = f"{base}.zip"
     else:
-        content = json.dumps(
-            payload, ensure_ascii=False, indent=2, cls=DjangoJSONEncoder
-        ).encode("utf-8")
+        content = json.dumps(payload, ensure_ascii=False, indent=2, cls=DjangoJSONEncoder).encode(
+            "utf-8"
+        )
         content_type = "application/json"
         filename = f"{base}.json"
 

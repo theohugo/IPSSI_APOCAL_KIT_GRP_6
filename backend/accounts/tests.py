@@ -131,7 +131,9 @@ def test_data_export_returns_user_data(client, user):
     assert response["Content-Type"] == "application/json"
     assert "attachment;" in response["Content-Disposition"]
 
-    payload = json.loads(b"".join(response.streaming_content) if response.streaming else response.content)
+    payload = json.loads(
+        b"".join(response.streaming_content) if response.streaming else response.content
+    )
     assert payload["account"]["email"] == "alice@test.com"
     assert len(payload["quizzes"]) == 1
     assert payload["quizzes"][0]["title"] == "Cours de biologie"
@@ -162,15 +164,15 @@ def test_data_export_isolates_other_users(client, user):
     """Un export ne doit JAMAIS contenir les données d'un autre utilisateur."""
     import json
 
-    other = User.objects.create_user(
-        username="bob", email="bob@test.com", password="motdepasse123"
-    )
+    other = User.objects.create_user(username="bob", email="bob@test.com", password="motdepasse123")
     _quiz_for(other, title="Cours secret de Bob")
     _quiz_for(user, title="Cours d'Alice")
 
     client.force_authenticate(user=user)
     response = client.post("/api/accounts/data-export/", {"format": "json"}, format="json")
-    body = (b"".join(response.streaming_content) if response.streaming else response.content).decode()
+    body = (
+        b"".join(response.streaming_content) if response.streaming else response.content
+    ).decode()
     assert "Cours d'Alice" in body
     assert "Cours secret de Bob" not in body
     payload = json.loads(body)
